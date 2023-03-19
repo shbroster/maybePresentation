@@ -1,19 +1,28 @@
 name: Deploy pages
-on: push
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2.1.5
         with:
           node-version: '19'
       - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
+        run: |
+          npm ci
+      - name: Build application
+        run: |
+          npm run build
       - name: Deploy pages
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@v2.3.0
         with:
           build_dir: dist
         env:
