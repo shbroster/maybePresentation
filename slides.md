@@ -255,7 +255,7 @@ layout: center
 * **Maybe** makes returning and checking for **null** explicit
 * Utility functions add syntactic sugar
 * Reduced value by lack of *polymorphic* functions in Typescript
-* ...
+
 ---
 layout: end
 ---
