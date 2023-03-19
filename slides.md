@@ -1,12 +1,18 @@
 ---
-theme: dracula
+theme: '../bento'
 transition: fade-out
-lineNumbers: true  
+lineNumbers: true
+highlighter: shiki
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
 
-# Maybe in **Typescript**
+# Maybe in <span style="color: #FF0133">Typescript</span>
 
 Sam Broster 2023
+
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
@@ -27,6 +33,10 @@ Sam Broster 2023
 ---
 layout: intro
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
 
 <style>
 p {
@@ -38,7 +48,7 @@ p {
 
 > I call it my billion-dollar mistake ... has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage ...
 
-<div align=right>C. A. R. Hoare</div>
+<div align=right>— C. A. R. Hoare</div>
 
 <!--
 * Read quote
@@ -50,23 +60,28 @@ p {
 
 ---
 
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
+
 # Introducing Maybe
 
 <div class="grid grid-cols-[60%,40%] gap-4">
   <div>
 
-a **Maybe** can be one of two types:
-* **Just** contains a value that is of type **T**
-* **Nothing** is empty 
+A `Maybe` can be one of two types:
+* `Just` contains a value that is of type `T`
+* `Nothing` is empty 
 
   <br> 
 
 ```ts
-const Nothing = (): Nothing => {
+export const Nothing = (): Nothing => {
   type: MaybeType.Nothing,
 })
   
-const Just = <T> (value: T): Just<T> => ({
+export const Just = <T> (value: T): Just<T> => ({
   type: MaybeType.Just,
   value,
 })
@@ -90,7 +105,7 @@ interface Nothing {
   type: typeof MaybeType.Nothing
 }
 
-type Maybe<T> = Just<T> | Nothing
+export type Maybe<T> = Just<T> | Nothing
 ```
 
 </div>
@@ -105,6 +120,10 @@ type Maybe<T> = Just<T> | Nothing
 ---
 layout: center
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
 
 # A Maybe Example
 
@@ -136,31 +155,34 @@ const updatePetById = (id: string, age: number): Maybe<Pet> => {
 ---
 layout: center
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
 
 # Utilities
 
-* *maybeWithDefault*
-
-  <small> use a default value if **Maybe** is **Nothing** </small>
+* *maybeWithDefault* - <small> use a default value if **Maybe** is **Nothing** </small>
   ```ts
   maybeWithDefault = <T>(m: Maybe<T>, defaultValue: T): T =>  {...}
   ```
-* *getOrThrow* 
-  
-  <small> throw an exception if **Maybe** is **Nothing** </small>
+
+* *getOrThrow* - <small> throw an exception if **Maybe** is **Nothing** </small>
   ```ts
   getOrThrow = <Y>(m: Maybe<T>, throwFunc: () => void)) : T => {...}
   ```
-* *maybeAndThen*
-  
-  <small> perform and action if a value is a **Just** value </small>  
-* *maybeMap*
 
-  <small> perform an action on all **Just** values in an array </small>
+* *maybeAndThen* - <small> perform and action if a value is a **Just** value </small>  
+
+* *maybeMap* - <small> perform an action on all **Just** values in an array </small>
 
 ---
 layout: center
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
 
 # Comparison of maybeAndThen
 
@@ -199,6 +221,11 @@ const updatePetById = (id: string, age: number): Maybe<Pet> => {
 ---
 layout: center
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
+
 # maybeAndThen
 
 ```typescript
@@ -211,9 +238,9 @@ const maybeAndThen = <T, R>(m: Maybe<T>, func: (t: T) => Maybe<R>): Maybe<R> => 
 ```
 <br>
 
-* Input: **Maybe\<T\>**
-* Output: **Maybe\<R\>**
-* Function that converts **T** to **Maybe\<R\>** 
+* Input: `Maybe<T>`
+* Output: `Maybe<R>`
+* Function that converts `T` to `Maybe<R\>` 
 
 <!--
 * Explain type signature & function
@@ -222,6 +249,11 @@ const maybeAndThen = <T, R>(m: Maybe<T>, func: (t: T) => Maybe<R>): Maybe<R> => 
 ---
 layout: center
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
+
 # Arrays of Maybes
 
 ```ts {-9|11-|all}
@@ -249,10 +281,14 @@ const maybeMap = <T, R>(ms: Maybe<T>[], func: (t: T) => Maybe<R>): Maybe<R>[] =>
 ---
 layout: center
 ---
+<img style="position: absolute;top: 10px; right: 10px;" 
+     width="50"
+     height="50"
+     src="https://uploads-ssl.webflow.com/628e26aa125598267a610d36/628e26aa125598e6e9610d61_bento-logo-primary-white-on-dark.svg">
 
 # Final Thoughts
 
-* **Maybe** makes returning and checking for **null** explicit
+* `Maybe` makes returning and checking for `null` explicit
 * Utility functions add syntactic sugar
 * Reduced value by lack of *polymorphic* functions in Typescript
 
