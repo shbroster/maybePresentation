@@ -2,7 +2,7 @@
   "name": "maybe",
   "private": true,
   "scripts": {
-    "build": "rm -rf docs && slidev build && mv dist docs",
+    "build": "slidev build",
     "dev": "slidev --open",
     "export": "slidev export"
   },
